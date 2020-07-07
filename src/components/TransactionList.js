@@ -9,20 +9,20 @@ const TransactionList = () => {
   const expenses = transactions.filter(transaction => transaction.type === 'exp');
 
   return (
-    <>
-      <div>
-        <h2>Income</h2>
-        <ul>
+    <div className="bottom">
+      <div className="transaction-list-container">
+        <h2 className="income__title">Income</h2>
+        <ul className="transaction-list">
           {income.map(transaction => <Transaction key={transaction.id} transaction={transaction} />)}
         </ul>
       </div>
-      <div>
-        <h2>Expenses</h2>
-        <ul>
+      <div className="transaction-list-container">
+        <h2 className="expenses__title">Expenses</h2>
+        <ul className="transaction-list">
           {expenses.map(transaction => <Transaction key={transaction.id} transaction={transaction} />)}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

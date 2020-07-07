@@ -60,9 +60,10 @@ body {
 
 .top {
   height: 40vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(./assets/back.jpg);
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(./assets/back.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background-color: #3A6877;
   position: relative;
 }
 
@@ -152,4 +153,44 @@ body {
 
 .add__btn:focus { 
   outline: none; 
+}
+
+.bottom {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.transaction-list-container {
+  margin: 2rem 5rem;
+  width: 30rem;
+  /* border: 1px solid black; */
+}
+
+.transaction-list {
+  list-style: none;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.income__title {
+  color: #42C08B
+}
+
+.expenses__title {
+  color: #DA634E;
+}
+
+.transaction {
+  padding: 13px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.transaction:first-child { 
+  border-top: 1px solid #e7e7e7; 
 }

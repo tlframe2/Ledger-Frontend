@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { TransactionContext } from '../contexts/TransactionContext';
+import IosCloseCircleOutline from 'react-ionicons/lib/IosCloseCircleOutline';
 
 const Transaction = ({ transaction }) => {
   const { removeTransaction } = useContext(TransactionContext);
   const [classList, setClassList] = useState('delete-btn hide-btn');
-  //onClick={() => removeTransaction(transaction.id)}
 
   return (
     <li className="transaction">
@@ -15,7 +15,6 @@ const Transaction = ({ transaction }) => {
         onMouseLeave={() => setClassList('delete-btn hide-btn')}
       >
         <div 
-          //className="transaction-amount"
           className={
             transaction.type === 'inc' 
             ? 'transaction-amount income-amount'
@@ -29,7 +28,7 @@ const Transaction = ({ transaction }) => {
           }
         </div>
         <button className={classList} onClick={() => removeTransaction(transaction.id)}>
-          <i className="ion-ios-close-outline"></i>
+          <IosCloseCircleOutline fontSize="22px" color="#DA634E" />
         </button>
       </div>
     </li>

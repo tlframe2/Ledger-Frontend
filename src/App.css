@@ -172,14 +172,11 @@ h2 {
 }
 
 .delete-btn {
-  color: #DA634E;
-  font-size: 22px;
   margin-left: 1rem;
   background: none;
   border: none;
   cursor: pointer;
   vertical-align: middle;
-  line-height: 1;
 }
 
 .show-btn {

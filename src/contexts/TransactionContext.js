@@ -7,7 +7,7 @@ const TransactionContextProvider = props => {
   const [transactions, setTransactions] = useState([]);
   
   const addTransaction = (type, description, amount) => {
-    setTransactions([...transactions, { id: uuidv4(), type, description, amount: parseInt(amount) }]);
+    setTransactions([...transactions, { id: uuidv4(), type, description, amount: parseFloat(amount) }]);
   }
 
   const removeTransaction = id => {

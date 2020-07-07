@@ -25,7 +25,7 @@ const NewTransactionForm = () => {
             <option value="exp">-</option>
           </select>
           <input type="text" className="add__description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Transaction Description" />
-          <input type="number" className="add__value" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Amount" />
+          <input type="number" step="0.01"  className="add__value" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Amount" />
           <button className="add__btn"><i className="ion-ios-checkmark-outline"></i></button>
         </form>
       </div>

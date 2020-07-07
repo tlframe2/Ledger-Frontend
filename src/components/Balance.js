@@ -8,12 +8,23 @@ const Balance = () => {
   console.log(amounts);
   const total = amounts.length > 0 ? amounts.reduce((acc, item) => (acc += item), 0).toFixed(2) : 0;
 
+  const monthsArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const currDate = new Date();
+  const currMonth = monthsArr[currDate.getMonth()];
+  const currYear = currDate.getFullYear();
+
   return (
     <div className="top">
       <div className="budget">
-        <div className="budget__value">Balance is {total}</div>
+        <div className="date">Available Budget for {currMonth} {currYear}:</div>
+        <div className="budget__value">
+          {
+            total > 0
+            ? `+ ${total}`
+            : total
+          }
+        </div>
       </div>
-      
     </div>
   );
 }

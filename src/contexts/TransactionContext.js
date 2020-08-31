@@ -10,7 +10,7 @@ const TransactionContextProvider = props => {
   const addTransaction = async (type, description, amount) => {
     const originalData = [...transactions];
     const newTransaction = { id: uuidv4(), type, description, amount: parseFloat(amount) };
-    setTransactions([...transactions, { id: uuidv4(), type, description, amount: parseFloat(amount) }]);
+    setTransactions([...transactions, newTransaction]);
 
     console.log(newTransaction);
 

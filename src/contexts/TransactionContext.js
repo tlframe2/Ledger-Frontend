@@ -12,8 +12,6 @@ const TransactionContextProvider = props => {
     const newTransaction = { id: uuidv4(), type, description, amount: parseFloat(amount) };
     setTransactions([...transactions, newTransaction]);
 
-    console.log(newTransaction);
-
     try {
       await axios.post('https://ledger-backend.herokuapp.com/transaction', newTransaction);
     } catch (err) {
@@ -25,8 +23,6 @@ const TransactionContextProvider = props => {
   const removeTransaction = async id => {
     const originalData = [...transactions];
     setTransactions(transactions.filter(transaction => transaction.id !== id));
-
-    console.log(id);
 
     try {
       await axios.delete(`https://ledger-backend.herokuapp.com/transaction/${id}`);

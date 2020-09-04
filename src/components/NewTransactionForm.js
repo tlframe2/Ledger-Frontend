@@ -2,17 +2,25 @@ import React, { useState, useContext } from 'react';
 import { TransactionContext } from '../contexts/TransactionContext';
 import IosCheckmarkCircleOutline from 'react-ionicons/lib/IosCheckmarkCircleOutline'
 
+/**
+ * Fields used to create new transaction
+ */
 const NewTransactionForm = () => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState(0);
-  const [type, setType] = useState('inc');
+  const [type, setType] = useState('inc'); // default is income
   const { addTransaction } = useContext(TransactionContext);
 
+  /**
+   * Calls addTransaction and passes current states of each attribute as arguments to create new transaction
+   * @param {object} e - event object 
+   */
   const onSubmit = e => {
     e.preventDefault();
 
     addTransaction(type, description, amount);
 
+    // Reset fields
     setDescription('');
     setAmount('');
   }

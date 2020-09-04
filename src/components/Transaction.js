@@ -2,6 +2,10 @@ import React, { useContext, useState } from 'react';
 import { TransactionContext } from '../contexts/TransactionContext';
 import IosCloseCircleOutline from 'react-ionicons/lib/IosCloseCircleOutline';
 
+/**
+ * Displays details of transaction
+ * @param {object} transaction - transaction object 
+ */
 const Transaction = ({ transaction }) => {
   const { removeTransaction } = useContext(TransactionContext);
   const [classList, setClassList] = useState('delete-btn hide-btn');

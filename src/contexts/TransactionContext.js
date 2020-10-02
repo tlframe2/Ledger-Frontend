@@ -1,4 +1,5 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -10,6 +11,13 @@ export const TransactionContext = createContext();
  */
 const TransactionContextProvider = props => {
   const [transactions, setTransactions] = useState([]);
+  const { userData, logout } = useContext(UserContext);
+
+  let config = {
+    headers: {
+      Authorization: `Bearer ${userData.token}`
+    }
+  }
   
   /**
    * Creates new transaction
@@ -23,7 +31,9 @@ const TransactionContextProvider = props => {
     setTransactions([...transactions, newTransaction]);
 
     try {
-      await axios.post('https://ledger-backend.herokuapp.com/transaction', newTransaction);
+      // await axios.post('https://ledger-backend.herokuapp.com/transaction', newTransaction);
+      // await axios.post('http://localhost:5000/transaction', newTransaction, config);
+      await axios.post('https://ledger-backend.herokuapp.com/transaction', newTransaction, config);
     } catch (err) {
       setTransactions(originalData);
       alert(err.message);
@@ -39,7 +49,9 @@ const TransactionContextProvider = props => {
     setTransactions(transactions.filter(transaction => transaction.id !== id));
 
     try {
-      await axios.delete(`https://ledger-backend.herokuapp.com/transaction/${id}`);
+      // await axios.delete(`https://ledger-backend.herokuapp.com/transaction/${id}`);
+      // await axios.delete(`http://localhost:5000/transaction/${id}`, config);
+      await axios.delete(`https://ledger-backend.herokuapp.com/transaction/${id}`, config);
     } catch (err) {
       setTransactions(originalData);
       alert(err.message);
@@ -50,8 +62,18 @@ const TransactionContextProvider = props => {
    * Retrieves all transactions
    */
   const getTransactions = async () => {
-    const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction');
-    setTransactions(data);
+    //const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction');
+    // const { data } = await axios.get('http://localhost:5000/transaction/byUser', config);
+    try {
+      const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction/byUser', config);
+      setTransactions(data);
+    } catch (err) {
+      // console.log(typeof err.response.status);
+      // console.log(err.response.status);
+      if (err.response.status === 401 || err.response.status === 422) {
+        logout();
+      }
+    }
   }
 
   /**
@@ -59,7 +81,7 @@ const TransactionContextProvider = props => {
    */
   useEffect(() => {
     getTransactions();
-  }, []);
+  }, [userData.isAuthorized]);
 
   /**
    * Context provider

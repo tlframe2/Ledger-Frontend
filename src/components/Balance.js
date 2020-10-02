@@ -15,8 +15,10 @@ const Balance = () => {
   const currMonth = monthsArr[currDate.getMonth()];
   const currYear = currDate.getFullYear();
 
+  const bgColor = total >= 0 ? 'positive-balance' : 'negative-balance';
+
   return (
-    <div className="top">
+    <div className={`top ${bgColor}`}>
       <div className="budget">
         <div className="date">Available Budget for {currMonth} {currYear}:</div>
         <div className="budget__value">

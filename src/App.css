@@ -12,17 +12,112 @@
 
 body {
   color: #555;
-  font-family: Open Sans;
+  font-family: "Open Sans";
   font-size: 16px;
   position: relative;
   height: 100vh;
   font-weight: 400;
 }
 
+.container {
+  height: 100vh;
+  /* background-color: #42C08B; */
+  /* background-color: #a4c4b6; */
+  display: flex;
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  /* padding: 10rem; */
+}
+
+.illustration-container {
+  color: #fff;
+  width: 60vw;
+  /* padding: 5rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a4c4b6;
+  border-right: 1px solid #a6c5b7;
+}
+
+/* .greeting p {
+  max-width: 200px;
+} */
+
+/* .greeting span {
+  text-decoration: underline;
+  text-decoration-color: #DA634E;
+} */
+
+.login-form {
+  background-color: #fff;
+  width: 40vw;
+  padding: 7rem;
+  border-left: 1px solid #f2f2f2;
+}
+
+.login-form .title {
+  text-align: center;
+  /* padding-bottom: 1rem;
+  border-bottom: 1px solid #DA634E; */
+  font-size: 4rem;
+}
+
+.login-form .subtitle {
+  text-align: center;
+  color: #a0a29f;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.login-form label,
+.login-form input,
+.toggle-form {
+  display: block;
+}
+
+.login-form label {
+  margin-top: 2rem;
+  color: #a0a29f;
+}
+
+.login-form input {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e7e7e7;
+}
+
+.login-form .submit-btn {
+  width: 50%;
+  margin: 3rem auto;
+  border-radius: 2rem;
+}
+
+.login-form .toggle-form {
+  /* text-align: center; */
+  padding: 0;
+  border: none;
+  background-color: #fff;
+  margin: 0 auto;
+  text-decoration: underline;
+}
+
+
+
 .top {
   height: 40vh;
-  background-color: #3A6877;
+  /* background-color: #3A6877; */
+  /* background-color: #a4c4b6; */
   position: relative;
+}
+
+.positive-balance {
+  background-color: #a4c4b6;
+}
+
+.negative-balance {
+  background-color: #db615d;
 }
 
 .budget {
@@ -111,7 +206,8 @@ body {
 
 .add__type:focus,
 .add__description:focus,
-.add__value:focus {
+.add__value:focus,
+.login-form input:focus {
   outline: none;
   border: 1px solid #42C08B;
 }
@@ -185,4 +281,16 @@ h2 {
 
 .hide-btn {
   display: none;
+}
+
+.logout-btn {
+  display: block;
+  width: 10rem;
+  padding: 1rem;
+  margin: 3rem auto;
+  border-radius: 2rem;
+  border: none;
+  background-color: #DA634E;
+  color: #fff;
+  font-size: 1.2rem;
 }

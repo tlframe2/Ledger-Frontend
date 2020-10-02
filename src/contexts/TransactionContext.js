@@ -61,26 +61,41 @@ const TransactionContextProvider = props => {
   /**
    * Retrieves all transactions
    */
-  const getTransactions = async () => {
-    //const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction');
-    // const { data } = await axios.get('http://localhost:5000/transaction/byUser', config);
-    try {
-      const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction/byUser', config);
-      setTransactions(data);
-    } catch (err) {
-      // console.log(typeof err.response.status);
-      // console.log(err.response.status);
-      if (err.response.status === 401 || err.response.status === 422) {
-        logout();
-      }
-    }
-  }
+  // const getTransactions = async () => {
+  //   //const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction');
+  //   // const { data } = await axios.get('http://localhost:5000/transaction/byUser', config);
+  //   try {
+  //     const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction/byUser', config);
+  //     setTransactions(data);
+  //   } catch (err) {
+  //     // console.log(typeof err.response.status);
+  //     // console.log(err.response.status);
+  //     if (err.response.status === 401 || err.response.status === 422) {
+  //       logout();
+  //     }
+  //   }
+  // }
 
   /**
    * Fetches transactions when component mounts
    */
   useEffect(() => {
+    const getTransactions = async () => {
+      //const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction');
+      // const { data } = await axios.get('http://localhost:5000/transaction/byUser', config);
+      try {
+        const { data } = await axios.get('https://ledger-backend.herokuapp.com/transaction/byUser', config);
+        setTransactions(data);
+      } catch (err) {
+        // console.log(typeof err.response.status);
+        // console.log(err.response.status);
+        if (err.response.status === 401 || err.response.status === 422) {
+          logout();
+        }
+      }
+    }
     getTransactions();
+    // eslint-disable-next-line
   }, [userData.isAuthorized]);
 
   /**
